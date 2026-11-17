@@ -4,3 +4,4 @@ ollama
 websockets
 numpy
 sounddevice
+piper-tts

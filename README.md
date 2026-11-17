@@ -32,6 +32,7 @@ ESP32 (MAX98357A amp + speaker, OLED emotion face)
 | OLED display | Working |
 | ESP32 microphone streaming | In progress |
 | Wake word | Planned |
+| ESP32 firmware | I2S / OLED hardware test only |
 
 Update this table as you finish each part.
 
@@ -120,8 +121,10 @@ Find your laptop's IP address with `ipconfig` (use the IPv4 address of your Wi-F
 
 ### 2. ESP32 firmware
 
+> **Note:** the firmware folder currently holds only an I2S audio and OLED hardware test. Wi-Fi/WebSocket streaming from the ESP32 is not implemented yet, so the `config.h` step below applies once it is added.
+
 1. Install the [Arduino IDE](https://www.arduino.cc/en/software) and add ESP32 board support (Boards Manager -> "esp32" by Espressif).
-2. Install these libraries (Library Manager): `Adafruit SSD1306`, `Adafruit GFX`, and a WebSocket client library such as `WebSockets` by Markus Sattler. Match the libraries used in your code.
+2. Install these libraries (Library Manager): `U8g2`, and a WebSocket client library such as `WebSockets` by Markus Sattler. Match the libraries used in your code.
 3. In `firmware/echo_firmware/`, copy `config.example.h` to `config.h` and fill in your details:
 
 ```cpp
