@@ -16,3 +16,8 @@ build/
 # Large or generated audio
 *.wav
 *.mp3
+
+# Model files (too large for GitHub)
+*.onnx
+*.onnx.json
+*.bin
