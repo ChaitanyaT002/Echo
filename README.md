@@ -18,7 +18,7 @@ ESP32 (MAX98357A amp + speaker, OLED emotion face)
 | Stage | Tool | Runs on |
 |---|---|---|
 | Microphone capture | INMP441 (I2S) | ESP32 |
-| Speech-to-text | faster-whisper (`base` model) | Laptop |
+| Speech-to-text | faster-whisper (`base.en` model) | Laptop |
 | Language model | Ollama, `llama3.2:1b` | Laptop |
 | Text-to-speech | Kokoro | Laptop |
 | Audio playback | MAX98357A + speaker | ESP32 |
@@ -77,7 +77,7 @@ Echo/
 │       ├── echo_firmware.ino
 │       └── config.example.h
 ├── server/              # Laptop code (Python)
-│   ├── main.py
+│   ├── server.py
 │   └── requirements.txt
 ├── .gitignore
 └── README.md
@@ -106,11 +106,15 @@ pip install -r requirements.txt
 # Download the language model (one time)
 ollama pull llama3.2:1b
 
+# Download Kokoro voice files (one time)
+curl.exe -L -O https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+curl.exe -L -O https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+
 # Start the server
-python main.py
+python server.py
 ```
 
-On the first run, faster-whisper and Kokoro download their models automatically, so the first start takes longer. When the server is ready it listens for the ESP32 on a WebSocket port (check `main.py` for the exact port).
+On the first run, faster-whisper and Kokoro download their models automatically, so the first start takes longer. When the server is ready it listens for the ESP32 on a WebSocket port (check `server.py` for the exact port).
 
 Find your laptop's IP address with `ipconfig` (use the IPv4 address of your Wi-Fi adapter). You need it in the next step.
 
@@ -124,7 +128,7 @@ Find your laptop's IP address with `ipconfig` (use the IPv4 address of your Wi-F
 #define WIFI_SSID     "your-wifi-name"
 #define WIFI_PASSWORD "your-wifi-password"
 #define SERVER_IP     "192.168.x.x"   // laptop IP from ipconfig
-#define SERVER_PORT   8765            // must match the port in main.py
+#define SERVER_PORT   8765            // must match the port in server.py
 ```
 
 4. Select **Tools -> Board -> ESP32 Dev Module** and choose the correct COM port.

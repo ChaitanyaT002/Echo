@@ -1,0 +1,6 @@
+faster-whisper
+kokoro-onnx
+ollama
+websockets
+numpy
+sounddevice
