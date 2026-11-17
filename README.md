@@ -144,6 +144,15 @@ Find your laptop's IP address with `ipconfig` (use the IPv4 address of your Wi-F
 2. Power the ESP32. It connects to Wi-Fi and then to the server.
 3. Speak to the assistant. The reply plays through the speaker and the OLED shows the emotion.
 
+## Quick run (Windows)
+
+After the one-time setup above, start the server with one command from the repo folder:
+
+```powershell
+cd Echo\server; .\venv\Scripts\python.exe server.py
+```
+
+This uses the virtual environment's Python directly, so you don't need to activate it. Keep Ollama running in the background. The server prints a `ws://<your-ip>:8765` address, and that is the address to put in the ESP32 config.
 ## Troubleshooting
 
 | Problem | Fix |
