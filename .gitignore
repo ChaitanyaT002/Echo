@@ -1,0 +1,18 @@
+# Secrets
+config.h
+secrets.h
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Build and editor files
+.pio/
+build/
+.vscode/
+
+# Large or generated audio
+*.wav
+*.mp3
